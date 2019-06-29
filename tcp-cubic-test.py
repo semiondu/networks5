@@ -480,6 +480,8 @@ class ConsoleApp( Frame ):
 				       
 	    #TODO: write the iperf3 command to run in the client and redirect the results to <file_path/hostx> where x is the host number
 	    #TODO: For each client host use: consoles[i].sendCmd( '???? ' + ?? +  '> ' + file_path + str(i) + ' 2>&1')
+	for i in range (5):
+		consoles[i+5].sendCmd( 'iperf3 -c' + ip + '> ' +file_path +str(i) + ' 2>&1')
 
 	
 	
