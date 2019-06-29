@@ -44,7 +44,7 @@ class DoubleSwitchTopo(Topo):
 	    #self.addLink( switch1, switch2, bw=10Mbps, delay='5ms', loss=2,
             #              max_queue_size=1000 )
 
-        self.addLink(switch1, switch2, bw=100, delay ='5ms', loss=1)
+        self.addLink(switch1, switch2, bw=100, loss=1)
 	    
 class Console( Frame ):
     "A simple console on a host."
