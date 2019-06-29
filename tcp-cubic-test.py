@@ -462,15 +462,22 @@ class ConsoleApp( Frame ):
 	#TODO define half of the hosts to be server
 	#TODO write the iperf3 command to run in the server at the background
 	#TODO For each server host use: consoles[i].node.cmd( '??? &' )
+	for i in range(5):
+		consoles[i].node.cmd( 'iperf3 -s')
 	
 	file_path = '/home/mininet/mininet/examples/consolesOutput/host'
 	time.sleep(2)
 	
 	#TODO clean the directory with previous test results
 	#TODO - Use: consoles[count/2].node.cmd( 'sudo rm -rf ' + file_path + '*')	
-
+	consoles[count/2].node.cmd( 'sudo rm -rf' + file_path + '*')
+	
 	#TODO define half of the hosts to be client
 	#TODO Get the iperf server IP using command like this example:   ip = consoles[i-count/2].node.IP()
+	for i in range (5):
+		ip = consoles[5+i-count/2].node.IP()
+		consoles[5+i].node.cmd('iperf3 -c ip --log file ' + file_path+'/host'+i)
+				       
 	    #TODO: write the iperf3 command to run in the client and redirect the results to <file_path/hostx> where x is the host number
 	    #TODO: For each client host use: consoles[i].sendCmd( '???? ' + ?? +  '> ' + file_path + str(i) + ' 2>&1')
 
