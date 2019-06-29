@@ -44,7 +44,7 @@ class DoubleSwitchTopo(Topo):
 	    #self.addLink( switch1, switch2, bw=10Mbps, delay='5ms', loss=2,
             #              max_queue_size=1000 )
 
-        self.addLink(switch1, switch2, bw=100, loss=1)
+        self.addLink(switch1, switch2, bw=20, loss=1)
 	    
 class Console( Frame ):
     "A simple console on a host."
@@ -474,8 +474,9 @@ class ConsoleApp( Frame ):
 	
 	#TODO define half of the hosts to be client
 	#TODO Get the iperf server IP using command like this example:   ip = consoles[i-count/2].node.IP()
-	for i in range (4):
+	for i in range (3):
 		consoles[4+i].sendCmd ('iperf3 -c 10.0.0.' + str(i+1)+ ' --time 60 > ' + file_path + str(i+1) + ' 2>&1')
+	consoles[7].senCmd ('iperf3 -c 10.0.0.4 --time 60 --udp > ' + file_path + str(4) + ' 2>&1'
 				       
 	    #TODO: write the iperf3 command to run in the client and redirect the results to <file_path/hostx> where x is the host number
 	    #TODO: For each client host use: consoles[i].sendCmd( '???? ' + ?? +  '> ' + file_path + str(i) + ' 2>&1')
