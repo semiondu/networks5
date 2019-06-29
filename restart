@@ -5,4 +5,5 @@ rm -rf networks5
 git clone https://github.com/semiondu/networks5.git
 cd networks5
 cp tcp-cubic-test.py ../mininet/mininet/examples
+cp restart ..
 #cd ../mininet/mininet/examples
